@@ -1,0 +1,13 @@
+# Options Analyzer Tool Configuration
+
+# Analysis parameters
+min_premium_percent: 0.5  # Minimum annualized premium percentage
+max_days_to_expiry: 200    # Maximum days to expiration to consider
+
+# Display options
+show_probability: true    # Show probability metrics
+show_ai_analysis: true    # Show AI-generated analysis
+
+# Default values
+default_strategy: cash_secured_put  # Default strategy to analyze
+default_ticker: SPY                 # Default ticker symbol
