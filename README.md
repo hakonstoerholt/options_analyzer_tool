@@ -22,7 +22,7 @@ A command-line tool for analyzing stock options strategies using data from Yahoo
 
 1. Clone this repository:
    ```
-   git clone <your-repo-url>
+   git clone https://github.com/hakonstoerholt/options_analyzer_tool.git
    cd options_analyzer_tool
    ```
 
