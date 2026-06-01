@@ -41,8 +41,9 @@ def load_config() -> Dict[str, Any]:
         default_config = {
             'min_premium_percent': 0.5,
             'max_days_to_expiry': 45,
-            'use_ai_analysis': True,
+            'show_ai_analysis': True,
             'default_strategy': 'cash_secured_put',
+            'default_ticker': 'SPY',
         }
         save_config(default_config)
         return default_config

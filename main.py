@@ -59,7 +59,8 @@ def parse_arguments():
         '-p', '--premium',
         type=float,
         default=default_min_premium,
-        help=f'Minimum annualized premium percentage (default: {default_min_premium}%)'
+        # %% so argparse's help formatting (which does help % params) does not choke on the percent sign
+        help=f'Minimum annualized premium percentage (default: {default_min_premium}%%)'
     )
     
     parser.add_argument(
@@ -110,7 +111,7 @@ def run_analysis(args):
                 print(f"Warning: Invalid format for expiration date '{args.expiration}'. Expected YYYY-MM-DD.")
             
             if not chosen_expiration:
-                 print("Falling back to default expiration date selection (15-60 DTE).")
+                 print(f"Falling back to nearest suitable expiration within {args.days} days.")
 
         if not chosen_expiration: # Default logic: Find earliest expiration > 0 and <= args.days DTE
             suitable_expirations = []

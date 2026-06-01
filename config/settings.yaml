@@ -5,7 +5,6 @@ min_premium_percent: 0.5  # Minimum annualized premium percentage
 max_days_to_expiry: 200    # Maximum days to expiration to consider
 
 # Display options
-show_probability: true    # Show probability metrics
 show_ai_analysis: true    # Show AI-generated analysis
 
 # Default values

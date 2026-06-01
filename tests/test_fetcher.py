@@ -53,7 +53,7 @@ class TestFetcher(unittest.TestCase):
         # Setup mock
         mock_ticker_instance = MagicMock()
         mock_ticker.return_value = mock_ticker_instance
-        mock_ticker_instance.options = ['2023-12-15', '2023-12-22']
+        mock_ticker_instance.options = ['2026-06-19', '2026-06-26']
         
         mock_option_chain = MagicMock()
         mock_ticker_instance.option_chain.return_value = mock_option_chain
@@ -70,12 +70,12 @@ class TestFetcher(unittest.TestCase):
         ]
         
         # Call the function
-        result = fetcher.get_options_chain('AAPL', '2023-12-15')
+        result = fetcher.get_options_chain('AAPL', '2026-06-19')
         
         # Assertions
         mock_ticker.assert_called_once_with('AAPL')
-        mock_ticker_instance.option_chain.assert_called_once_with('2023-12-15')
-        self.assertEqual(result['expiration_date'], '2023-12-15')
+        mock_ticker_instance.option_chain.assert_called_once_with('2026-06-19')
+        self.assertEqual(result['expiration_date'], '2026-06-19')
         self.assertEqual(len(result['calls']), 1)
         self.assertEqual(len(result['puts']), 1)
         self.assertEqual(result['calls'][0]['strike'], 150)

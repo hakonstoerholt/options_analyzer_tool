@@ -115,9 +115,8 @@ def analyze_option_strategy(
         Keep your answer concise but informative. Use plain language that an intermediate options trader would understand.
         """
         
-        # Use the Gemini Pro model
-        model = genai.GenerativeModel('gemini-2.5-flash-preview-04-17')
-        
+        model = genai.GenerativeModel('gemini-2.5-flash')
+
         # Generate the analysis
         response = model.generate_content(prompt)
         
@@ -176,9 +175,8 @@ def recommend_strategy(stock_info: Dict[str, Any], volatility_metrics: Dict[str,
         Keep your answer concise but informative. Use plain language that an intermediate options trader would understand.
         """
         
-        # Use the Gemini Pro model
-        model = genai.GenerativeModel('gemini-pro')
-        
+        model = genai.GenerativeModel('gemini-2.5-flash')
+
         # Generate the recommendation
         response = model.generate_content(prompt)
         
