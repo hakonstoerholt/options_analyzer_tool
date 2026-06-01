@@ -19,6 +19,15 @@ at the bottom.
 - Filters to keep the output relevant: only OTM strikes, drops zero-bid options, and
   (when delta is available) keeps strikes roughly in the 0.05-0.40 delta range
 - Optional AI write-up of the top opportunities via Google Gemini
+- Visual report (`--chart`): payoff diagram, strike screen, and expected-move map
+
+## Visual report
+
+Pass `--chart` to save a one-page visual: the payoff at expiry for the top strike, a
+screen of every candidate strike (annualized return vs probability of staying OTM,
+coloured by implied volatility), and where those strikes sit against the expected move.
+
+![Example report](assets/report.png)
 
 ## Installation
 
@@ -66,6 +75,8 @@ Running `python main.py AAPL` screens cash secured puts for Apple using the defa
 - `-e`, `--expiration`: Specific expiration date (YYYY-MM-DD). If it isn't a listed
   expiration the tool falls back to the nearest suitable date within `--days`.
 - `--no-ai`: Skip the AI commentary
+- `--chart`: Save a visual report (payoff, strike screen, expected move) as a PNG
+- `--chart-dir`: Directory for chart images (default: `charts/`)
 
 Defaults for ticker, strategy, days, and premium come from `config/settings.yaml`.
 
@@ -79,6 +90,11 @@ python main.py TSLA -s covered_call -p 1.0
 Screen cash secured puts for SPY at a specific expiration, no AI:
 ```
 python main.py SPY -e 2026-06-19 --no-ai
+```
+
+Save the visual report alongside the table:
+```
+python main.py SPY --no-ai --chart
 ```
 
 ## Configuration

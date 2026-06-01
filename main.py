@@ -73,7 +73,19 @@ def parse_arguments():
         action='store_true',
         help='Disable AI analysis'
     )
-    
+
+    parser.add_argument(
+        '--chart',
+        action='store_true',
+        help='Save a visual report (payoff, strike screen, expected move) as a PNG'
+    )
+
+    parser.add_argument(
+        '--chart-dir',
+        default='charts',
+        help='Directory for saved chart images (default: charts)'
+    )
+
     return parser.parse_args()
 
 
@@ -209,7 +221,19 @@ def run_analysis(args):
         # Display results
         # Ensure core.run_analysis_and_display exists and handles potential None for opportunities
         core.run_analysis_and_display(args.ticker, args.strategy, **strategy_results)
-        
+
+        # Save a visual report if requested
+        if args.chart:
+            if strategy_results.get('opportunities'):
+                from options_analyzer.viz import charts
+                chart_path = charts.build_report(
+                    args.ticker, args.strategy, strategy_results,
+                    chosen_expiration, out_dir=args.chart_dir
+                )
+                print(f"Saved chart report to {chart_path}")
+            else:
+                print("No opportunities found, skipping chart.")
+
     except Exception as e:
         print(f"Error: {str(e)}")
         return 1
